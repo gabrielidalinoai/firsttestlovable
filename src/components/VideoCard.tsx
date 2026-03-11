@@ -32,7 +32,7 @@ const VideoCard = ({ video, index }: VideoCardProps) => {
       transition={{ duration: 0.4, delay: index * 0.08 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="glass-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:border-primary/30 hover:scale-105 hover:z-10 hover:shadow-[0_0_30px_hsl(var(--primary)/0.25)]"
+      className="glass-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 ease-out hover:border-primary/40 hover:scale-[1.12] hover:z-20 hover:shadow-[0_20px_60px_-10px_hsl(var(--primary)/0.4),0_0_40px_hsl(var(--primary)/0.15)]"
     >
       {/* Thumbnail / Video */}
       <div className="relative aspect-video overflow-hidden">
