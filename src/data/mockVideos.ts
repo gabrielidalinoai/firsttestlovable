@@ -56,7 +56,7 @@ export const mockVideos: Video[] = [
     id: "4",
     title: "Office Building Lobby - 24/7 Live Feed Highlights",
     description: "Key moments from the office building lobby security feed including package deliveries and visitor logs.",
-    thumbnail: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=640&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=640&q=80",
     videoUrl: "https://www.w3schools.com/html/movie.mp4",
     duration: "5:15",
     views: "567K views",
