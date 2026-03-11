@@ -17,7 +17,7 @@ export const mockVideos: Video[] = [
     id: "1",
     title: "Parking Lot Surveillance - Suspicious Activity Detected",
     description: "Security camera captures unusual movement in the north parking lot during late night hours.",
-    thumbnail: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=640&q=80",
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
     duration: "0:45",
     views: "342K views",
