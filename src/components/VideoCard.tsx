@@ -30,14 +30,12 @@ const VideoCard = ({ video, index }: VideoCardProps) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="glass-card rounded-2xl overflow-hidden group cursor-pointer hover:border-primary/30 transition-all duration-300"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="glass-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:border-primary/30 hover:scale-105 hover:z-10 hover:shadow-[0_0_30px_hsl(var(--primary)/0.25)]"
     >
       {/* Thumbnail / Video */}
-      <div
-        className="relative aspect-video overflow-hidden"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className="relative aspect-video overflow-hidden">
         <img
           src={video.thumbnail}
           alt={video.title}
@@ -54,14 +52,30 @@ const VideoCard = ({ video, index }: VideoCardProps) => {
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovering ? "opacity-100" : "opacity-0"}`}
         />
 
+        {/* Dark overlay / capa */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent transition-opacity duration-300 ${isHovering ? "opacity-0" : "opacity-100"}`}
+        />
+
         {/* Play icon overlay when not hovering */}
         {!isHovering && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <Play className="h-10 w-10 text-primary fill-primary" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-14 h-14 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center border border-primary/30">
+              <Play className="h-7 w-7 text-primary fill-primary ml-0.5" />
+            </div>
           </div>
         )}
 
-        <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-background/80 text-foreground text-xs font-medium backdrop-blur-sm">
+        {/* Title overlay on thumbnail */}
+        {!isHovering && (
+          <div className="absolute bottom-0 left-0 right-0 p-3">
+            <p className="text-sm font-medium text-foreground line-clamp-1 drop-shadow-lg">
+              {video.title}
+            </p>
+          </div>
+        )}
+
+        <span className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-background/80 text-foreground text-xs font-medium backdrop-blur-sm">
           {video.duration}
         </span>
       </div>
