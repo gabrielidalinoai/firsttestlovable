@@ -82,7 +82,7 @@ export const mockVideos: Video[] = [
     id: "6",
     title: "Traffic Intersection Camera - Close Call Compilation",
     description: "Dramatic near-miss incidents captured at a busy city intersection by traffic monitoring cameras.",
-    thumbnail: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=640&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=640&q=80",
     videoUrl: "https://www.w3schools.com/html/movie.mp4",
     duration: "12:45",
     views: "8.9M views",
