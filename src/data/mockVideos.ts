@@ -43,7 +43,7 @@ export const mockVideos: Video[] = [
     id: "3",
     title: "Store Front Camera - Nighttime Footage Compilation",
     description: "Compilation of notable events captured by storefront security cameras over the past month.",
-    thumbnail: "https://images.unsplash.com/photo-1553775927-a071d5a72f79?w=640&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=640&q=80",
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
     duration: "8:30",
     views: "2.1M views",
