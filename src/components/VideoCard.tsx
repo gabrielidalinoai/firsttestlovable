@@ -1,5 +1,6 @@
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Clock, Eye } from "lucide-react";
+import { Clock, Eye, Play } from "lucide-react";
 import type { Video } from "@/data/mockVideos";
 
 interface VideoCardProps {
@@ -8,6 +9,22 @@ interface VideoCardProps {
 }
 
 const VideoCard = ({ video, index }: VideoCardProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    videoRef.current?.play().catch(() => {});
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
@@ -15,14 +32,35 @@ const VideoCard = ({ video, index }: VideoCardProps) => {
       transition={{ duration: 0.4, delay: index * 0.08 }}
       className="glass-card rounded-2xl overflow-hidden group cursor-pointer hover:border-primary/30 transition-all duration-300"
     >
-      {/* Thumbnail */}
-      <div className="relative aspect-video overflow-hidden">
+      {/* Thumbnail / Video */}
+      <div
+        className="relative aspect-video overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <img
           src={video.thumbnail}
           alt={video.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovering ? "opacity-0" : "opacity-100"}`}
           loading="lazy"
         />
+        <video
+          ref={videoRef}
+          src={video.videoUrl}
+          muted
+          loop
+          playsInline
+          preload="none"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovering ? "opacity-100" : "opacity-0"}`}
+        />
+
+        {/* Play icon overlay when not hovering */}
+        {!isHovering && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <Play className="h-10 w-10 text-primary fill-primary" />
+          </div>
+        )}
+
         <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-background/80 text-foreground text-xs font-medium backdrop-blur-sm">
           {video.duration}
         </span>
@@ -54,7 +92,6 @@ const VideoCard = ({ video, index }: VideoCardProps) => {
           </div>
         </div>
 
-        {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mt-3">
           {video.tags.map((tag) => (
             <span
