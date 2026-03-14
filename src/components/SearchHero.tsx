@@ -47,14 +47,14 @@ const SearchHero = ({ onSearch }: SearchHeroProps) => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder='Try "a kid playing soccer"...'
+            placeholder='Try "Stealing money"...'
             className="w-full h-14 md:h-16 rounded-2xl bg-secondary border border-border pl-14 pr-6 text-foreground text-lg placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300"
           />
           <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
         </div>
 
         <div className="flex flex-wrap gap-2 mt-4 justify-center">
-          {["a kid playing soccer", "cooking tutorial", "cute cats", "space documentary"].map((suggestion) => (
+          {["Stealing money", "Class test cheating", "Hidding products", "Prohbited parking"].map((suggestion) => (
             <button
               key={suggestion}
               type="button"
